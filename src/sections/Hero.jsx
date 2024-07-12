@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { arrowRight } from '../assets/icons'
 import Button from '../components/Button'
 import ShoeCard from '../components/ShoeCard'
@@ -7,7 +7,23 @@ import { bigShoe1 } from '../assets/images'
 
 export default function Hero() {
   // maintains a currently selected bigShoeImg
-  const [bigShoeImg, setBigShoeImg] = useState(shoes[0].bigShoe)
+  // const [bigShoeImg, setBigShoeImg] = useState(shoes[0].bigShoe)
+  const [index, setIndex] = useState(0)
+  useEffect(() => {
+     setInterval(() => {
+      setIndex( (index) => ((index +1) % 3))
+      // setBigShoeImg((index) => (shoes[index].bigShoe) )
+     }, 5000)
+        
+        
+        // setBigShoeImg(() => shoes[index].bigShoe)
+        
+       
+ 
+  }, [])
+
+ 
+
   return (
     // hero section, flex container-1
     <section  id='home'
@@ -48,17 +64,18 @@ export default function Hero() {
       {/* flex item-1, flex container for hero-Shoe section */}
       <div className='relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center'>
         {/* big Shoe img  */}
-        <img src={bigShoeImg} width={600} height={500} className='object-contain  relative z-10'  />
+        <img src={shoes[index].bigShoe} width={600} height={500} className='object-contain  relative z-10'  />
         {/* absolutely positioned flex item and a flex container */}
         <div className='flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6'>
           {/* flex items, thumbnail images */}
-          {shoes.map((image, index) => (
-            <div key={index}>
+          {shoes.map((image, i) => (
+            <div key={i}>
               <ShoeCard 
+                imgIndex={i}
                 index={index}
                 imgURL={image}
-                changeBigShoeImage={(shoe) => setBigShoeImg(shoe)}
-                bigShoeImg={bigShoeImg}
+                changeBigShoeImage={(index) => setIndex(index)}
+                
               />
             </div>
           ))}
