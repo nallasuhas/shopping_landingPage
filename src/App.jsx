@@ -1,4 +1,14 @@
-
+import {
+  CustomerReviews,
+  Footer,
+  Hero,
+  PopularProducts,
+  Services,
+  SpecialOffers,
+  Subscribe,
+  SuperQuality,
+} from "./sections";
+import Nav from "./components/Nav";
 
 
 function App() {
@@ -7,30 +17,30 @@ function App() {
   return (
     <>
         <main className='relative'>
-          nav
+          <Nav/>
             <section className='xl:padding-l wide:padding-r padding-b '>
-                hero
+                <Hero/>
             </section>
             <section className='padding'>
-               PopularProducts 
+               <PopularProducts/>
             </section>
             <section className='padding'>
-              super quality
+              <SuperQuality/>
             </section>
             <section className='padding-x py-10'>
-                     services
+                <Services/>
             </section>
            <section className='padding'>
-                special offers
+                <SpecialOffers/>
             </section>
             <section className='bg-pale-blue padding'>
-              CustomerReviews 
+              <CustomerReviews/> 
             </section>
             <section className='padding-x sm:py-32 py-16 w-full'>
-              Subscribe
+              <Subscribe/>
             </section>
             <section className=' bg-black padding-x padding-t pb-8'>
-              Footer 
+              <Footer/> 
             </section>
        
         </main>
